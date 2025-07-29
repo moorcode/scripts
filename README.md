@@ -1,6 +1,6 @@
 # PowerShell scripts
 
-If you repeat a task in the same way, automate it. PowerShell can be used to automate tasks through the command prompt. A Windows device includes Windows PowerShell and can be installed on macOS `brew install --cask powershell` and Linux (Ubuntu) `brew install --cask powershell`. __Tips:__ Always test with dummy data first to avoid data loss (use `-WhatIf`).
+Tasks that are repeated in the same way should be automated. PowerShell can be used to automate tasks through the command prompt. A Windows device includes Windows PowerShell and can be installed on macOS `brew install --cask powershell` and Linux (Ubuntu) `brew install --cask powershell`. __Tips:__ Always test with dummy data first to avoid data loss (use `-WhatIf`).
 
 ## File Management Scripts
 __What:__ Automate file transfer
