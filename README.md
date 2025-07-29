@@ -3,7 +3,7 @@
 PowerShell can be used to automate tasks through the command prompt. A Windows device includes Windows PowerShell and can be installed on macOS `brew install --cask powershell` and Linux (Ubuntu) `brew install --cask powershell`. __Tips:__Always test with dummy data first to avoid data loss. Use `-WhatIf`
 
 ## File Management Scripts
-__What:__Automate 
+__What:__ Automate file transfer
 __Why:__ No longer will a file have to be manually cut from Downloads and pasted to it's new home. 
 ```javascript
   $sourceDir = "C:\SourceFolder"
