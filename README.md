@@ -3,21 +3,31 @@
 PowerShell can be used to automate tasks through the command prompt. A Windows device includes Windows PowerShell and can be installed on macOS `brew install --cask powershell` and Linux (Ubuntu) `brew install --cask powershell`. __Tips:__Always test with dummy data first to avoid data loss. Use `-WhatIf`
 
 ## File Management Scripts
-
-__Why__: No longer will a file have to be manually cut from the Downloads folder and pasted to it's new home. 
+__What:__Automate 
+__Why:__ No longer will a file have to be manually cut from Downloads and pasted to it's new home. 
 ```javascript
   $sourceDir = "C:\SourceFolder"
   $destDir = "D:\BackupFolder"
   
-  # Copy all contents
-  Copy-Item -Path $sourceDir\* -Destination $destDir -Recurse -Force
+  # Ensure destination folder exists
+  if (!(Test-Path $destDir)) {
+      New-Item -Path $destDir -ItemType Directory
+  }
   
-  # Optional: Check if destination now exists
-  if (Test-Path $destDir) {
-      # Delete original folder and contents
-      Remove-Item -Path $sourceDir -Recurse -Force
-      Write-Output "Folder copied and original deleted."
-  } else {
-      Write-Error "Copy failed. Original folder not deleted."
+  # Get all files in the source folder (excluding subfolders)
+  Get-ChildItem -Path $sourceDir -File | ForEach-Object {
+      $sourceFile = $_.FullName
+      $destinationFile = Join-Path $destDir $_.Name
+  
+      # Copy the file
+      Copy-Item -Path $sourceFile -Destination $destinationFile -Force
+  
+      # Confirm copy, then delete original
+      if (Test-Path $destinationFile) {
+          Remove-Item -Path $sourceFile -Force
+          Write-Output "Moved file: $($_.Name)"
+      } else {
+          Write-Warning "Failed to copy file: $($_.Name)"
+      }
   }
 ```
