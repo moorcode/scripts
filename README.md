@@ -4,6 +4,7 @@ PowerShell can be used to automate tasks through the command prompt. A Windows d
 
 ## File Management Scripts
 __What:__ Automate file transfer
+
 __Why:__ No longer will a file have to be manually cut from Downloads and pasted to it's new home. 
 ```javascript
   $sourceDir = "C:\SourceFolder"
